@@ -6,14 +6,11 @@ and notify if there is any difference.
 @version: June 21, 2017
 '''
 import os, urllib2, re, sys, time
-from main.helper import send_email, latest_filepath
+from helper import send_email, latest_filepath
 from csv_utils import *
 
-# email_address = sys.argv[1]
-# alert_interval = int(sys.argv[2])  # in hour
-
-email_address = "zukjimote@gmail.com"
-alert_interval = 24  # in hour
+email_address = sys.argv[1]
+alert_interval = int(sys.argv[2])  # in hour
 
 in_dir = "../../WikiCFP"
 user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'
@@ -82,7 +79,7 @@ while 1:
         print "%s : %s" % \
             (now, ", ".join([info['Event'] for conference, info in updated_set.iteritems()]))
             
-        subject = "New WikiCFP: %s\n\n" % \
+        subject = "New WikiCFP: %s" % \
                   (", ".join([info['Event'] for info in updated_set.values()]))
         
         message = ""
@@ -94,5 +91,5 @@ while 1:
         
         attachment = in_dir+"/"+prefix+now+".csv"
 #         print message
-        send_email(email_address, subject, message. attachment)
+        send_email(email_address, subject, message, attachment)
     time.sleep(alert_interval * 3600)

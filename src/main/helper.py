@@ -4,6 +4,7 @@ Helper functions.
 @author: Yohan
 @version: June 21, 2017
 '''
+from subprocess import Popen, PIPE, STDOUT
 import os
 
 def send_email(address, subject, message, attachment):
@@ -11,11 +12,14 @@ def send_email(address, subject, message, attachment):
     
     Args:
         address: address to which the message is sent.
-        message: the subject and content of the message.
-                 e.g., "Subject: [SUBJECT]\n\n[CONTENT]\n"
+        subject: subject of the email.
+        message: body of the email.
+        attachment: attachment path.
     """                 
-#     os.system("printf \"%s\" | sendmail %s" % (message.replace('"', '\"'), address))
-    os.system('mail -s %s "%s" %s <<< "%s"' % (subject, attachment, address, message))
+    if len(subject) > 50: subject = subject[:50] + "..."
+    p = Popen(['mail', '-s', subject, '-t', address, '-A', attachment], stdin=PIPE)
+    p.communicate(input=message)
+
     
 def latest_filepath(in_dir, prefix):
     """Finds the latest record and returns its path.
