@@ -38,7 +38,8 @@ while 1:
                                ).read()
 
     
-    for heading, ul in re.findall("<strong><a[^>]+>(.*?)</a></strong>\\s*<ul>(.*?)</ul>", new_html, re.DOTALL):
+    for heading, ul in re.findall("<strong><a[^>]+>(.*?)</a></strong>\\s*<ul>(.*?)</ul>",
+                                  new_html, re.DOTALL):
         for conference, regex in proceedings:
             if regex != heading: continue
             for li in re.findall("<li .+?</li>", ul):

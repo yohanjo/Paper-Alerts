@@ -42,9 +42,12 @@ while 1:
                                 url, headers={'User-Agent': user_agent})
                               ).read()
 
-        m = re.search('<tr[^>]+><td> Event </td><td> When </td><td> Where </td><td> Deadline</td></tr>\\s*(<tr.*?</tr>)\\s*(<tr.*?</tr>)', html, re.DOTALL)
-        m1 = re.search('<td[^>]+><a href="(.*?)">(.*?)</a></td>\\s*<td[^>]+>(.*?)</td></tr>', m.group(1))
-        m2 = re.search('<td[^>]+>(.*?)</td>\\s*<td[^>]+>(.*?)</td>\\s*<td[^>]+>(.*?)</td>', m.group(2))
+        m = re.search('<tr[^>]+><td> Event </td><td> When </td><td> Where </td><td> Deadline</td></tr>\\s*(<tr.*?</tr>)\\s*(<tr.*?</tr>)',
+                      html, re.DOTALL)
+        m1 = re.search('<td[^>]+><a href="(.*?)">(.*?)</a></td>\\s*<td[^>]+>(.*?)</td></tr>',
+                       m.group(1))
+        m2 = re.search('<td[^>]+>(.*?)</td>\\s*<td[^>]+>(.*?)</td>\\s*<td[^>]+>(.*?)</td>',
+                       m.group(2))
         
         event_url = "http://www.wikicfp.com/" + m1.group(1)
         event = m1.group(2)
