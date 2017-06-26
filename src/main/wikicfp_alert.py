@@ -18,7 +18,7 @@ prefix = "WikiCFP-"
 
 # Load subscription
 conferences = []
-for row in iter_csv_noheader(in_dir+"/subscription.csv"):
+for row in iter_csv_header(in_dir+"/subscription.csv"):
     conferences.append((row['Conference'], row['URL']))
 
 
