@@ -6,11 +6,11 @@ and notify if there is any difference.
 @version: June 25, 2017
 '''
 import os, urllib2, re, sys, time
-from main.helper import send_email, latest_filepath
+from helper import send_email, latest_filepath
 from csv_utils import *
 
-email_address = "zukjimote@gmail.com" # sys.argv[1]
-alert_interval = 24 #int(sys.argv[2])  # in hour
+email_address = sys.argv[1]
+alert_interval = int(sys.argv[2])  # in hour
 
 url = "http://dl.acm.org/proceedings.cfm"
 in_dir = "../../ACM"
@@ -76,6 +76,6 @@ while 1:
             message += "%s: %s\n" % (event, info['URL'])
         
         attachment = in_dir+"/"+prefix+now+".csv"
-        print message
-#         send_email(email_address, subject, message, attachment)
+        #print message
+        send_email(email_address, subject, message, attachment)
     time.sleep(alert_interval * 3600)    
