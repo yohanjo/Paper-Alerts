@@ -66,7 +66,7 @@ while 1:
     with open(in_dir+"/"+prefix+now+".csv", 'w') as f:
         out_csv = csv.writer(f)
         out_csv.writerow(header)
-        for conference, info in new_record.iteritems():
+        for info in new_record.values():
             out_csv.writerow([info[k] for k in header])
 
     updated_set = dict()
@@ -74,7 +74,8 @@ while 1:
         if conference not in old_record or info['Deadline'] != old_record[conference]['Deadline']:
             updated_set[conference] = info
             
-    if len(updated_set) == 0: print now, ": ", "No update"
+    if len(updated_set) == 0:
+        print now, ": ", "No update"
     else:
         print "%s : %s" % \
             (now, ", ".join([info['Event'] for conference, info in updated_set.iteritems()]))

@@ -9,4 +9,4 @@ import os
 email_address = "your@email.address"
 alert_interval = 24
 
-os.system("python wikicfp_alert.py %s %d" % (email_address, alert_interval))
+os.system("python acm_proceedings_alert.py %s %d" % (email_address, alert_interval))

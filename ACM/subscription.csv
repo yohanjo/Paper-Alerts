@@ -1,7 +1,9 @@
-CHI,Human Factors in Computing Systems
-KDD,Conference on Knowledge Discovery and Data Mining
-WSDM,Conference on Web Search and Data Mining
-CSCW,Conference on Computer Supported Cooperative Work and Social Computing Companion
-L@S,Conference on Learning @ Scale
-WWW,Conference on World Wide Web
+Conference,Heading
+CHI,Conference on Human Factors in Computing Systems
+CHI Extended,Conference on Human Factors in Computing Systems-Extended Abstracts
+KDD,Knowledge Discovery and Data Mining
+WSDM,Web Search and Data Mining
+CSCW,Computer Supported Cooperative Work
+L@S,Learning @ Scale
+WWW,World Wide Web
 CIKM,Conference on Information and Knowledge Management
