@@ -1,4 +1,4 @@
-# PaperAlerts
+# Paper Alerts
 
 Send alert emails for updates in WikiCFP or ACM Proceedings.
 
