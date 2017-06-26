@@ -62,7 +62,8 @@ while 1:
                                   "URL": event_url}
                       
     # Print the new record
-    header = ["Conference", "Event", "FullName", "When", "Where", "Deadline", "URL"]         
+    header = ["Conference", "Event", "FullName", "When", 
+              "Where", "Deadline", "URL"]   
     with open(in_dir+"/"+prefix+now+".csv", 'w') as f:
         out_csv = csv.writer(f)
         out_csv.writerow(header)
@@ -71,14 +72,15 @@ while 1:
 
     updated_set = dict()
     for conference, info in new_record.iteritems():
-        if conference not in old_record or info['Deadline'] != old_record[conference]['Deadline']:
+        if conference not in old_record or \
+                info['Deadline'] != old_record[conference]['Deadline']:
             updated_set[conference] = info
             
     if len(updated_set) == 0:
         print now, ": ", "No update"
     else:
         print "%s : %s" % \
-            (now, ", ".join([info['Event'] for conference, info in updated_set.iteritems()]))
+            (now, ", ".join([info['Event'] for info in updated_set.values()]))
             
         subject = "New WikiCFP: %s" % \
                   (", ".join([info['Event'] for info in updated_set.values()]))
