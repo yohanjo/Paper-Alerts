@@ -16,7 +16,7 @@ Send alert emails for updates in WikiCFP or ACM Proceedings.
  Read [ACM Digital Library](http://dl.acm.org/proceedings.cfm) and send alert emails when new proceedings are available for user-selected conferences.
  * Make `subscription.csv` under `/ACM/` with the columns:
    * `Conference`: The conference name for your reference.
-   * `Heading`: The heading of the conference series. The heading appears above the list of the proceedings on [webpage](http://dl.acm.org/proceedings.cfm). 
+   * `Heading`: The heading of the conference series. Headings appear above the proceedings list of each conference on the [webpage](http://dl.acm.org/proceedings.cfm). 
  * Run `python /src/main/acm_proceedings_alert.py [YOUR_EMAIL_ADDRESS] [UPDATE_INTERVAL]`
    * `[YOUR_EMAIL_ADDRESS]`: Your email address.
    * `[UPDATE_INTERVAL]`: Update interval in hour.
