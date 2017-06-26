@@ -1,6 +1,6 @@
 # Paper Alerts
 
-Send alert emails for updates on WikiCFP or ACM Proceedings.
+Send alert emails for updates on WikiCFP and ACM Proceedings.
 
 ## WikiCFP
  Read [WikiCFP](http://www.wikicfp.org) and send alert emails when a new call-for-papers is available for user-selected conferences.
