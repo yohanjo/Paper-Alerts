@@ -2,6 +2,8 @@
 
 Send alert emails for updates on WikiCFP and ACM Proceedings.
 
+The `mail` command used by this code works on Ubuntu, but seems not working on macOS.
+
 ## WikiCFP
  Read [WikiCFP](http://www.wikicfp.org) and send alert emails when a new call-for-papers is available for user-selected conferences.
  * Make `subscription.csv` under `/WikiCFP/` with the columns:
