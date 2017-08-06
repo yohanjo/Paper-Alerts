@@ -16,6 +16,17 @@ in_dir = "../../WikiCFP"
 user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'
 prefix = "WikiCFP-"
 
+def numeric_date(s):
+    m = re.search("([a-zA-Z]{3}) (\\d{1,2}), (\\d{4})", s.group())
+    month = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+             "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}\
+            [m.group(1).lower()]
+    day = int(m.group(2))
+    year = int(m.group(3))
+    return "{}/{:02d}/{:02d}".format(year, month, day)
+
+
+
 # Load subscription
 conferences = []
 for row in iter_csv_header(in_dir+"/subscription.csv"):
@@ -52,9 +63,9 @@ while 1:
         event_url = "http://www.wikicfp.com/" + m1.group(1)
         event = m1.group(2)
         fullname = m1.group(3)
-        when = m2.group(1)
+        when = re.sub("[a-zA-Z]{3} \\d{1,2}, \\d{4}", numeric_date, m2.group(1))
         where = m2.group(2)
-        deadline = m2.group(3)
+        deadline = re.sub("[a-zA-Z]{3} \\d{1,2}, \\d{4}", numeric_date, m2.group(3))
 
         new_record[conference] = {"Conference": conference,
                                   "Event": event,
